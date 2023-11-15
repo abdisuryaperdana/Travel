@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/forminputbooking.js"></script>
 </head>
 
 <body>
@@ -116,6 +117,172 @@
           </div>
         </div>
       </div>
+
+      <!-- table booking -->
+      <div class="container-booking">
+        <table>
+            <div class="title-list">List of Booking</div>
+            <div class="button-input">
+              <button class="button-22" onclick="openPopupForm('add-booking')">Tambah Booking</button>
+            </div>
+          <thead class="thead">
+            <tr class="tr-thead">
+              <th class="th-name">NAMA</th>
+              <th class="th-nohp">NOMOR HANDPHONE</th>
+              <th class="th-org">JUMLAH ORANG</th>
+              <th class="th-jam">JAM</th>
+              <th class="th-tgl">HARI/TGL</th>
+              <th class="th-kegiatan">KEGIATAN</th>
+              <th class="th-action">ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="bookingoutput">
+            <script>
+              // Select the HTML element where you want to display the data
+              const bookingContainer =
+                document.getElementById("bookingoutput");
+              // Map the data from the response rows
+              fetch("http://localhost:8000/booked")
+                .then((response) => response.json())
+                .then((data_booked) => {
+                  // Map the data from the response rows
+                  const bookedElements = data_booked.data.map(
+                    (booked) => {
+                      return `
+                      <tr>
+                      <td>${booked.nama}</td>
+                      <td class="text-td">${booked.nohp}</td>
+                      <td class="text-td">${booked.jumlahorang}</td>
+                      <td class="text-td">${booked.jam}</td>
+                      <td class="text-td">${booked.jadwal}</td>
+                      <td class="text-td">${booked.kegiatan}</td>
+                      <td>
+                        <div class="button-container">
+                        <button class="button-edit" onclick="openPopupForm('add-booking')">Edit</button>
+                        <button class="button-delete" onclick="openPopupForm('add-booking')">Edit</button>
+                        </div>
+                      </td>
+                      </tr>
+                      `
+                    }
+                  );
+                  bookingContainer.innerHTML =
+                    bookedElements.join("");
+                });
+            </script>
+          </tbody>
+      </table>
+      </div>
+
+      <!-- table festival -->
+      <div class="container-festival">
+        <table>
+            <div class="title-list">List of Festival</div>
+            <div class="button-input">
+              <button class="button-22" onclick="openPopupForm('add-festival')">Tambah Festival</button>
+            </div>
+          <thead class="thead">
+            <tr class="tr-thead">
+              <th class="th-namafestival">NAMA KEGIATAN</th>
+              <th class="th-deskfestival">DESKRIPSI</th>
+              <th class="th-jadwalfestival">JADWAL</th>
+              <th class="th-lokasifestival">LOKASI</th>
+              <th class="th-gmaps">GMAPS</th>
+              <th class="th-actionfestival">ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="festoutput">
+            <script>
+              // Select the HTML element where you want to display the data
+              const dataContainer =
+                document.getElementById("festoutput");
+              // Map the data from the response rows
+              fetch("http://localhost:8000/festival")
+                .then((response) => response.json())
+                .then((data_festival) => {
+                  // Map the data from the response rows
+                  const festivalElements = data_festival.rows.map(
+                    (festival) => {
+                      return `
+                      <tr>
+                        <td class="text-bold-500">${festival.nama}</td>
+                        <td>${festival.deskripsi}</td>
+                        <td class="text-td">${festival.jadwal}</td>
+                        <td class="text-td">${festival.lokasi}</td>
+                        <td class="text-td">${festival.gmaps}</td>
+                        <td>
+                          <div class="button-container">
+                        <button class="button-edit" onclick="openPopupForm('add-booking')">Edit</button>
+                        <button class="button-delete" onclick="openPopupForm('add-booking')">Edit</button>
+                        </div>  
+                        </td>
+                          
+                    
+                      </tr>
+                            `;
+                          }
+                        );
+                  dataContainer.innerHTML = festivalElements.join("");
+                });
+            </script>
+          </tbody>
+      </table>
+      </div>
+
+      <!-- table Pameran -->
+      <div class="container-pameran">
+        <table>
+            <div class="title-list">List of Pameran</div>
+            <div class="button-input">
+              <button class="button-22" onclick="openPopupForm('add-Pameran')">Tambah Pameran</button>
+            </div>
+          <thead class="thead">
+            <tr class="tr-thead">
+              <th class="th-namafestival">NAMA KEGIATAN</th>
+              <th class="th-deskfestival">DESKRIPSI</th>
+              <th class="th-jadwalfestival">JADWAL</th>
+              <th class="th-lokasifestival">LOKASI</th>
+              <th class="th-gmaps">GMAPS</th>
+              <th class="th-actionfestival">ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="pameranOutput">
+            <script>
+              // Select the HTML element where you want to display the data
+              const pameranContainer =
+                document.getElementById("pameranOutput");
+              // Map the data from the response rows
+              fetch("http://localhost:8000/pameran")
+                .then((response) => response.json())
+                .then((data_pameran) => {
+                  // Map the data from the response rows
+                  const pameranElement = data_pameran.data.map(
+                    (pameran) => {
+                      return `
+                    <tr>
+                      <td class="text-bold-500">${pameran.nama}</td>
+                      <td>${pameran.deskripsi}</td>
+                      <td class="text-td">${pameran.jadwal}</td>
+                      <td class="text-td">${pameran.lokasi}</td>
+                      <td class="text-td">${pameran.gmaps}</td>
+                      <td>
+                        <div class="button-container">
+                        <button class="button-edit" onclick="openPopupForm('add-booking')">Edit</button>
+                        <button class="button-delete" onclick="openPopupForm('add-booking')">Edit</button>
+                        </div>  
+                      </td>
+                      </tr>
+                      `;
+                    }
+                  );
+                  pameranContainer.innerHTML =
+                    pameranElement.join("");
+                });
+            </script>
+          </tbody>
+      </table>
+      </div>
+
 </body>
 
 </html>
