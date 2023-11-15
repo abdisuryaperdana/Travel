@@ -1,0 +1,442 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar
+{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #ff523b;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+a{
+    text-decoration: none;
+    color: #555;
+}
+p{
+    color: #555;
+}
+.container{
+    max-width: 90%;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.container-navbar{
+    max-width: 100%;
+    margin: auto;
+}
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.col-2{
+    flex-basis: 50%;
+    min-width: 300px;
+}
+.col-2 img{
+    max-width: 100%;
+    padding: 50px 0;
+}
+.col-2 h1{
+    font-size: 50px;
+    line-height: 60px;
+    margin: 25px 0;
+}
+.btn{
+    display: inline-block;
+    background: #ff523b;
+    color: white;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+.btn:hover{
+    background: #563434;
+}
+.header{
+    background-image: url('images/backroundsumut1.png');
+}
+.header .row{
+    margin-top: 70px;
+}
+.categories{
+    margin: 70px 0;
+}
+.col-3{
+    flex-basis: 30%;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+.col-3 img{
+    width: 100%;
+}
+.small-container{
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.col-4{
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+.col-4 img{
+    width: 100%;
+}
+
+.box {
+    margin-left: 2em;
+    margin-top: 2em;
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 2em;
+  }
+  
+  .boxhero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .table-booking {
+    margin-left: 2em;
+    margin-top: 2em;
+    position: relative;
+  }
+  
+  .square {
+    width: 450px;
+    height: 190px;
+    background-color: rgba(210, 210, 210, 0.4);
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5%;
+  }
+  
+  .square-icon1 {
+    margin-top: 1em;
+    width: 80px;
+    height: 80px;
+    background-color: #083248;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
+  }
+  .square-icon2 {
+    margin-top: 1em;
+    width: 80px;
+    height: 80px;
+    background-color: #e69c31;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
+  }
+  .square-icon3 {
+    margin-top: 1em;
+    width: 80px;
+    height: 80px;
+    background-color: #ad0808;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
+  }
+  .icon {
+    font-size: 40px;
+    width: 100px;
+  }
+  
+  .info {
+    margin-top: 10px;
+    color: #083248;
+  }
+  
+  .count {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 2px;
+    color: #083248;
+  }
+
+  /* code baru */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #ffa01a;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+.action-btn {
+    background-color: #358097;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.action-btn:hover {
+    background-color: #024c63;
+}
+
+.title-list{
+    font-size: 25px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+.button-input {
+    display: flex;
+    gap: 10px;
+    padding-left: 10px;
+}
+.button-22 {
+  align-items: center;
+  appearance: button;
+  background-color: #0276FF;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: "RM Neue",sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 10px 21px;
+  text-align: center;
+  text-transform: none;
+  transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-container {
+    display: flex;
+    gap: 2px;
+}
+
+.button-edit {
+    background-color: #049d44;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button-delete {
+    background-color: #ff0000; /* warna merah sebagai contoh */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.button-22:active {
+  background-color: #006AE8;
+}
+
+.button-22:hover {
+  background-color: #1C84FF;
+}
+.th-name {
+    width: 250px;
+    text-align: center;
+  }
+  
+  .th-nohp {
+    width: 200px;
+    text-align: center;
+  }
+  
+  .th-org {
+    width: 130px;
+    text-align: center;
+  }
+  
+  .th-jam {
+    width: 100px;
+    text-align: center;
+  }
+  
+  .th-tgl {
+    width: 300px;
+    text-align: center;
+  }
+  
+  .th-kegiatan {
+    width: 350px;
+    text-align: center;
+  }
+  
+  .th-action{
+    width: 50px;
+    text-align: center;
+  }
+  .text-td {
+    text-align: center;
+  }
+
+  .container-booking{
+    padding-bottom: 50px;
+  }
+
+  .container-festival{
+    padding-bottom: 50px;
+  }
+
+  .container-pameran{
+    padding-bottom: 50px;
+  }
+
+  .th-namafestival {
+    width: 350px;
+    text-align: center;
+  }
+  
+  .th-fotofestival {
+    width: 140px;
+    text-align: center;
+  }
+  
+  .th-deskfestival {
+    width: 750px;
+    text-align: center;
+  }
+  
+  .th-jadwalfestival {
+    width: 200px;
+    text-align: center;
+  }
+  
+  .th-lokasifestival {
+    width: 150px;
+    text-align: center;
+  }
+  
+  .th-actionfestival {
+    width: 100px;
+    text-align: center;
+  }
+  .th-gmaps {
+    width: 100px;
+    text-align: center;
+  }
+
+
+
+
+
+
+  /* batas akhir add code baru */
+
+.menu-icon{
+    width: 28px;
+    margin-left: 20px;
+    display: none;
+}
+
+/* All Products */
+.row-2{
+    justify-content: space-between;
+    margin: 100px auto 50px;
+}
+select{
+    border: 1px solid #ff523b;
+    padding: 5px;
+}
+select:focus{
+    outline: none;
+}
+.page-btn{
+    margin: 0 auto 80px;
+}
+.page-btn span{
+    display: inline-block;
+    border: 1px solid #ff523b;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.page-btn span:hover{
+    background: #ff523b;
+    color: white;
+}
