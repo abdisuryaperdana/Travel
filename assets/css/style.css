@@ -12,8 +12,11 @@ body{
 {
     display: flex;
     align-items: center;
-    padding: 20px;
-    background-color: #ff523b;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #358097;
 }
 
 nav{
@@ -30,10 +33,10 @@ nav ul li{
 }
 a{
     text-decoration: none;
-    color: #555;
+    color: #fff;
 }
 p{
-    color: #555;
+    color: #fff;
 }
 .container{
     max-width: 90%;
@@ -45,6 +48,12 @@ p{
 .container-navbar{
     max-width: 100%;
     margin: auto;
+    overflow: hidden;
+    transition: 0.4s; /* Adds a transition effect when the padding is decreased */
+    position: fixed; /* Sticky/fixed navbar */
+    width: 100%;
+    top: 0; /* At the top */
+    z-index: 99; 
 }
 .row{
     display: flex;
@@ -52,6 +61,29 @@ p{
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.col-1{
+    flex-basis: 100%;
+    min-width: 300px;
+}
+.col-1 img{
+    max-width: 100%;
+    padding: 50px 0;
+}
+.col-1 h1{
+    color: #fff;
+    font-size: 4.5em;
+    font-weight: 650;
+    line-height: 70px;
+    margin: 5% 0 2% 0;
+}
+
+.col-1 p{
+    font-weight: 400;
+    font-size: 0.9em;
+    margin: 0 0 10% 0;
+}
+
 .col-2{
     flex-basis: 50%;
     min-width: 300px;
@@ -78,7 +110,8 @@ p{
     background: #563434;
 }
 .header{
-    background-image: url('images/backroundsumut1.png');
+    background-image: url('../images/background/backgroundsumut1.png');
+    background-position: center;
 }
 .header .row{
     margin-top: 70px;
@@ -100,6 +133,11 @@ p{
     padding-left: 25px;
     padding-right: 25px;
 }
+
+.small-container p{
+    color: #358097;
+    padding-right: 15px;
+}
 .col-4{
     flex-basis: 25%;
     padding: 10px;
@@ -112,14 +150,15 @@ p{
 }
 .title{
     text-align: center;
-    margin: 0 auto 80px;
+    margin: 0 auto 40px;
     position: relative;
     line-height: 60px;
     color: #555;
+    margin-top: 7%;
 }
 .title::after{
     content: '';
-    background: #ff523b;
+    background: #358097;
     width: 80px;
     height: 5px;
     border-radius: 5px;
@@ -204,13 +243,14 @@ small{
 }
 /* Footer */
 .footer{
-    background: black;
-    color: #8a8a8a;
+    background: #358097;
+    color: #fff;
     font-size: 14px;
     padding: 60px 0 20px;
+    margin-top: 5%;
 }
 .footer p{
-    color: #8a8a8a;
+    color: #fff;
 }
 .footer h3{
     color: #fff;
@@ -225,7 +265,8 @@ small{
 }
 .footer-col-2{
     flex: 1;
-    text-align: center;
+    text-align: left;
+    font-size: 13px;
 }
 .footer-col-2 img{
     width: 180px;
