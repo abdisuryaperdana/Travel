@@ -16,7 +16,7 @@ body{
     padding-right: 5%;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #358097;
+    background-color: #358097 !important;
 }
 
 nav{
@@ -54,6 +54,7 @@ p{
     width: 100%;
     top: 0; /* At the top */
     z-index: 99; 
+    
 }
 .row{
     display: flex;
@@ -125,8 +126,9 @@ p{
 }
 
 .header{
-    background-image: url('../images/background/backgroundsumut1.png');
+    /* background-image: url('../images/background/backgroundsumut1.png'); */
     background-position: center;
+    z-index: 99; 
 }
 .header .row{
     margin-top: 70px;
