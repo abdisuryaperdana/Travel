@@ -306,6 +306,33 @@ small{
     color: #fff;
     margin-bottom: 20px;
 }
+.footer hr{
+    border: none;
+    background: #b5b5b5;
+    height: 1px;
+    margin: 20px 0;
+}
+
+.footer-login{
+    background: #358097;
+    color: #fff;
+    font-size: 14px;
+    padding: 60px 0 20px;
+}
+.footer-login p{
+    color: #fff;
+}
+.footer-login h3{
+    color: #fff;
+    margin-bottom: 20px;
+}
+.footer-login hr{
+    border: none;
+    background: #b5b5b5;
+    height: 1px;
+    margin: 20px 0;
+}
+
 .footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4{
     min-width: 250px;
     margin-bottom: 20px;
@@ -335,12 +362,7 @@ ul{
 .app-logo img{
     width: 140px;
 }
-.footer hr{
-    border: none;
-    background: #b5b5b5;
-    height: 1px;
-    margin: 20px 0;
-}
+
 .copyright{
     text-align: center;
 }
@@ -479,8 +501,8 @@ th:last-child{
 
 /* Account page */
 .account-page{
-    padding: 50px 0;
-    background: radial-gradient(#fff, #ffd6d6);
+    padding: 50px 0 100px;
+    background: radial-gradient(#fff, #c3dfe8);
 }
 .form-container{
     background: #fff;
@@ -539,7 +561,7 @@ form a{
 #Indicator{
     width: 100px;
     border: none;
-    background: #ff523b;
+    background: #1c6277;
     height: 3px;
     margin-top: 8px;
     transform: translateX(100px);
