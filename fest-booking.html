@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/images/logo/logomaskotberwarna.png" />
-    <title>Festival | SmutOur</title>
+    <title>Booking | SmutOur</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="header-trave" style="background: radial-gradient(#fff, #ffd6d6);">
+    <div class="header-booking overlayblue" style="background-image: url('assets/images/uploads/example_fest.png');">
         <nav class="container-navbar">
             <div class="navbar">
                 <div class="logo">
@@ -29,6 +29,22 @@
                 <img src="assets/images/menu.png" class="menu-icon" onclick="menutoggle()"> -->
             </div>
         </nav>    
+        <div class="container">
+            <div class="row">
+                <div class="col-1">
+                    <center>
+                        <h1>Nama Kegiatan Festival </h1>
+                        <p style="font-weight: 50; font-size: 12px;"> 
+                            deskripsi kegiatan
+                        </p>
+                    </center>
+                    <!-- <a href="" class="btn">Explore Now &#8594;</a> -->
+                </div>
+                <!-- <div class="col-2">
+                    <img src="assets/images/image1.png">
+                </div> -->
+            </div>
+        </div>
     </div>
 
     <!-- Feadtued Categories -->
@@ -102,24 +118,42 @@
         <div class="small-container">
             <div class="row">
                 <div class="col-1">
-                    <h1 style="color: #358097;">Kegiatan Festival 1</h1>
+                        <form>
+                            <div class="form-group mb-2">
+                              <label class="text-black" for="nama">Nama Lengkap</label>
+                              <input type="text" class="form-control" id="nama" />
+                            </div>
+                            <div class="form-group mb-2">
+                              <label class="text-black" for="no_hp">No. Handphone</label>
+                              <input type="text" class="form-control" id="nohp" />
+                            </div>
+                            <div class="form-group mb-2">
+                              <label class="text-black" for="jml_org">Jumlah Orang</label>
+                              <input type="text" class="form-control" id="jmlorg" />
+                            </div>
+                            <div class="form-group mb-2">
+                              <label class="text-black" for="jam">Jam</label>
+                              <input type="text" class="form-control" id="jam" />
+                            </div>
+                            <div class="form-group mb-5">
+                              <label class="text-black" for="tanggal">Tanggal</label>
+                              <input type="text" class="form-control" id="jadwal" />
+                            </div>
+
+                            <input type="submit" class="btn" value="Booking"/>
+                        </form>
                 </div>
-                <div class="col-1">
-                    <center>
-                        <img src="assets/images/uploads/pamerantempo.jpg" class="offer-img" style="border-radius: 50px;">
-                    </center>
-                </div>
-                <div class="col-1"></div>
+                <!-- <div class="col-1"></div>
                     <small>
                         The Mi Smart Band 4 fearures a 39.9%larger (than Mi Band 3) AMOLED color full-touch display
                         with adjustable brightness, so everything is clear as can be.<br>
                     </small>
                     <p>Jadwal Kegiatan :</p>
-                </div>
-                <div class="col-1"></div>
-                    <a href="fest-booking.html" class="btn" style="color: #fff;">Booking</a>
+                </div> -->
+                <!-- <div class="col-1"></div>
+                    <a href="products.html" class="btn" style="color: #fff;">Booking</a>
                     <a href="products.html" class="btn-outline">Lokasi</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
