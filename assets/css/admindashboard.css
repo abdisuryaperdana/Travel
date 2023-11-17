@@ -12,8 +12,11 @@ body{
 {
     display: flex;
     align-items: center;
-    padding: 20px;
-    background-color: #ff523b;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #358097 !important;
 }
 
 nav{
@@ -30,7 +33,7 @@ nav ul li{
 }
 a{
     text-decoration: none;
-    color: #555;
+    color: #ffffff;
 }
 p{
     color: #555;
@@ -43,8 +46,10 @@ p{
 }
 
 .container-navbar{
-    max-width: 100%;
-    margin: auto;
+  max-width: 100%;
+  margin: auto;
+
+  
 }
 .row{
     display: flex;
