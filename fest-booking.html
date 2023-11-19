@@ -9,241 +9,139 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 </head>
 
 <body>
-    <div class="header-booking overlayblue" style="background-image: url('assets/images/uploads/example_fest.png');">
-        <nav class="container-navbar">
-            <div class="navbar">
-                <div class="logo">
-                    <a href="index.html"><img src="assets/images/logo/colorlogowordmark.png" alt="SmutOur" width="220 em"></a>
+    <div id="festBooking">
+      <script>
+        // Select the HTML element where you want to display the data
+        const festContainer = document.getElementById("festBooking");
+
+        // Extract the id parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+
+        // Fetch the data for the specified id
+        fetch(`http://localhost:8000/fest/${id}`)
+          .then((response) => response.json())
+          .then((data) => {
+            // Map the data from the response rows
+            const fest = data;
+            const festElement = `
+                <div class="header-booking overlayblue" style="background-image: url('assets/images/uploads/${fest.data.foto}');">
+                    <nav class="container-navbar">
+                        <div class="navbar">
+                            <div class="logo">
+                                <a href="index.html"><img src="assets/images/logo/colorlogowordmark.png" alt="SmutOur" width="220 em"></a>
+                            </div>
+                            <nav>
+                                <ul id="MenuItems">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="team.html">Our Team</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </nav>    
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-1">
+                                <center>
+                                    <h1>${fest.data.nama}</h1>
+                                    <p style="font-weight: 50; font-size: 12px;"> 
+                                        ${fest.data.deskripsi}
+                                    </p>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <nav>
-                    <ul id="MenuItems">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                    </ul>
-                </nav>
-                <!-- <a href="cart.html"><img src="assets/images/cart.png" width="30px" height="30px"></a>
-                <img src="assets/images/menu.png" class="menu-icon" onclick="menutoggle()"> -->
-            </div>
-        </nav>    
-        <div class="container">
-            <div class="row">
-                <div class="col-1">
-                    <center>
-                        <h1>Nama Kegiatan Festival </h1>
-                        <p style="font-weight: 50; font-size: 12px;"> 
-                            deskripsi kegiatan
-                        </p>
-                    </center>
-                    <!-- <a href="" class="btn">Explore Now &#8594;</a> -->
+
+                <!-- Start Form Section -->
+                <div class="offer">
+                    <div class="small-container">
+                        <div class="row">
+                            <div class="col-1">
+                                    <form>
+                                        <div class="form-group mb-2">
+                                        <label class="text-black" for="nama">Nama Lengkap</label>
+                                        <input type="text" class="form-control" id="nama" />
+                                        </div>
+                                        <div class="form-group mb-2">
+                                        <label class="text-black" for="no_hp">No. Handphone</label>
+                                        <input type="text" class="form-control" id="nohp" />
+                                        </div>
+                                        <div class="form-group mb-2">
+                                        <label class="text-black" for="jml_org">Jumlah Orang</label>
+                                        <input type="text" class="form-control" id="jmlorg" />
+                                        </div>
+                                        <div class="form-group mb-2">
+                                        <label class="text-black" for="jam">Jam</label>
+                                        <input type="text" class="form-control" id="jam" />
+                                        </div>
+                                        <div class="form-group mb-5">
+                                        <label class="text-black" for="tanggal">Tanggal</label>
+                                        <input type="text" class="form-control" id="jadwal" />
+                                        </div>
+
+                                        <input type="submit" class="btn" value="Booking"/>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- <div class="col-2">
-                    <img src="assets/images/image1.png">
-                </div> -->
-            </div>
-        </div>
+              <!-- End Form Section -->
+              `;
+            festContainer.innerHTML = festElement;
+            const form = document.querySelector("form");
+
+            form.addEventListener("submit", async (event) => {
+              event.preventDefault();
+
+              const nama = document.getElementById("nama").value;
+              const nohp = document.getElementById("nohp").value;
+              const jumlahorang = document.getElementById("jmlorg").value;
+              const jadwal = document.getElementById("jadwal").value;
+              const kegiatan = `${fest.data.nama}`;
+              const jam = document.getElementById("jam").value;
+
+              const data = {
+                nama,
+                nohp,
+                jumlahorang,
+                jadwal,
+                kegiatan,
+                jam,
+              };
+
+              const response = await fetch("http://localhost:8000/book", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+              });
+
+              const result = await response.json();
+
+              if (result.success) {
+                alert("Terima Kasih, Booking berhasil!");
+                form.reset();
+                window.location.href = "index.html";
+              } else {
+                alert("Booking gagal!");
+                form.reset();
+              }
+            });
+          });
+      </script>
     </div>
 
-    <!-- Feadtued Categories -->
-
-    <!-- <div class="small-container">
-        <h2 class="title">Festival di Sumatera Utara</h2>
-        <form action="#" class="row g-12">
-            <div style="margin-left: 10px ;">
-                <input type="text" class="form-control" placeholder="Cari Festival"/>
-            </div>
-            <div>
-            <button type="submit" id="submit" class="btn-search">
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                fill="currentColor"
-                class="bi bi-search"
-                viewBox="0 0 16 16"
-                >
-                <path
-                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-                />
-                </svg>
-            </button>
-            </div>
-        </form>
-
-        <div class="row">
-            <div class="col-4">
-                <a href="product_details.html"><img src="assets/images/uploads/pamerantempo.jpg"></a>
-                <a href=""><h4>Festival 1</h4></a>
-                <a href=""><p>on <strong>Jadwal</strong></p></a>
-                <a href=""><p>Lokasi 1</p></a>
-                <center><a href="" class="btn-booking" style="color: white;">Booking</a></center>
-            </div>
-            <div class="col-4">
-                <a href="product_details.html"><img src="assets/images/uploads/pamerantempo.jpg"></a>
-                <a href=""><h4>Festival 2</h4></a>
-                <a href=""><p>on <strong>Jadwal</strong></p></a>
-                <a href=""><p>Lokasi 2</p></a>
-                <center><a href="" class="btn-booking" style="color: white;">Booking</a></center>
-            </div>
-            <div class="col-4">
-                <a href="product_details.html"><img src="assets/images/uploads/pamerantempo.jpg"></a>
-                <a href=""><h4>Festival 3</h4></a>
-                <a href=""><p>on <strong>Jadwal</strong></p></a>
-                <a href=""><p>Lokasi 3</p></a>
-                <center><a href="" class="btn-booking" style="color: white;">Booking</a></center>
-            </div>
-            <div class="col-4">
-                <a href="product_details.html"><img src="assets/images/uploads/pamerantempo.jpg"></a>
-                <a href=""><h4>Festival 4</h4></a>
-                <a href=""><p>on <strong>Jadwal</strong></p></a>
-                <a href=""><p>Lokasi 4</p></a>
-                <center><a href="" class="btn-booking" style="color: white;">Booking</a></center>
-            </div>
-            <div class="col-4">
-                <a href="product_details.html"><img src="assets/images/uploads/pamerantempo.jpg"></a>
-                <a href=""><h4>Festival 5</h4></a>
-                <a href=""><p>on <strong>Jadwal</strong></p></a>
-                <a href=""><p>Lokasi 5</p></a>
-                <center><a href="" class="btn-booking" style="color: white;">Booking</a></center>
-            </div>
-        </div>
-    </div> -->
-
-
-    <!-- Offer -->
-    <div class="offer">
-        <div class="small-container">
-            <div class="row">
-                <div class="col-1">
-                        <form>
-                            <div class="form-group mb-2">
-                              <label class="text-black" for="nama">Nama Lengkap</label>
-                              <input type="text" class="form-control" id="nama" />
-                            </div>
-                            <div class="form-group mb-2">
-                              <label class="text-black" for="no_hp">No. Handphone</label>
-                              <input type="text" class="form-control" id="nohp" />
-                            </div>
-                            <div class="form-group mb-2">
-                              <label class="text-black" for="jml_org">Jumlah Orang</label>
-                              <input type="text" class="form-control" id="jmlorg" />
-                            </div>
-                            <div class="form-group mb-2">
-                              <label class="text-black" for="jam">Jam</label>
-                              <input type="text" class="form-control" id="jam" />
-                            </div>
-                            <div class="form-group mb-5">
-                              <label class="text-black" for="tanggal">Tanggal</label>
-                              <input type="text" class="form-control" id="jadwal" />
-                            </div>
-
-                            <input type="submit" class="btn" value="Booking"/>
-                        </form>
-                </div>
-                <!-- <div class="col-1"></div>
-                    <small>
-                        The Mi Smart Band 4 fearures a 39.9%larger (than Mi Band 3) AMOLED color full-touch display
-                        with adjustable brightness, so everything is clear as can be.<br>
-                    </small>
-                    <p>Jadwal Kegiatan :</p>
-                </div> -->
-                <!-- <div class="col-1"></div>
-                    <a href="products.html" class="btn" style="color: #fff;">Booking</a>
-                    <a href="products.html" class="btn-outline">Lokasi</a>
-                </div> -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonial -->
-    <!-- <div class="testimonial">
-        <div class="small-container">
-            <div class="row">
-                <div class="col-3">
-                    <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        industry's standard dummy text.</p>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <img src="assets/images/user-1.png">
-                    <h3>Sean Parker</h3>
-                </div>
-                <div class="col-3">
-                    <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        industry's standard dummy text.</p>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <img src="assets/images/user-2.png">
-                    <h3>Mike Smith</h3>
-                </div>
-                <div class="col-3">
-                    <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        industry's standard dummy text.</p>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <img src="assets/images/user-3.png">
-                    <h3>Mabel Joe</h3>
-                </div>
-            </div>
-        </div>
-    </div>-->
-
-    <!-- Brands -->
-
-    <!-- <div class="brands">
-        <div class="small-container">
-            <div class="row">
-                <div class="col-5">
-                    <img src="assets/images/logo-godrej.png">
-                </div>
-                <div class="col-5">
-                    <img src="assets/images/logo-oppo.png">
-                </div>
-                <div class="col-5">
-                    <img src="assets/images/logo-coca-cola.png">
-                </div>
-                <div class="col-5">
-                    <img src="assets/images/logo-paypal.png">
-                </div>
-                <div class="col-5">
-                    <img src="assets/images/logo-philips.png">
-                </div>
-            </div>
-        </div>
-    </div> -->
+    
 
     <!-- Footer -->
     <div class="footer-login">
         <div class="container">
             <div class="row">
-                <!-- <div class="footer-col-1">
-                    <h3>Download Our App</h3>
-                    <p>Download App for Android and ios mobile phone.</p>
-                    <div class="app-logo">
-                        <img src="assets/images/play-store.png">
-                        <img src="assets/images/app-store.png">
-                    </div>
-                </div> -->
                 <div class="footer-col-2">
                     <h1 style="font-size: 50px;">SmutOur.</h1>
                     <p>
@@ -255,15 +153,7 @@
                         dan budaya unik Sumatera Utara.
                     </p>
                 </div>
-                <!-- <div class="footer-col-3">
-                    <h3>Useful Links</h3>
-                    <ul>
-                        <li>Coupons</li>
-                        <li>Blog Post</li>
-                        <li>Return Policy</li>
-                        <li>Join Affiliate</li>
-                    </ul>
-                </div> -->
+                
                 <div class="footer-col-4" style="text-align: right;">
                     <h3>Follow Us</h3>
                     <ul>

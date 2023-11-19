@@ -674,3 +674,11 @@ form a{
   background-size: cover; 
   box-shadow: inset 0 0 0 2000px rgba(53,128,151, 0.7);
 }
+
+.sizetitle{
+  width: 237px;
+  height: 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

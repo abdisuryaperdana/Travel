@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 </head>
 
 <body>
@@ -25,8 +24,6 @@
                         <li><a href="team.html">Our Team</a></li>
                     </ul>
                 </nav>
-                <!-- <a href="cart.html"><img src="assets/images/cart.png" width="30px" height="30px"></a>
-                <img src="assets/images/menu.png" class="menu-icon" onclick="menutoggle()"> -->
             </div>
         </nav>    
         <div class="container">
@@ -38,11 +35,7 @@
                             SmutOur menawarkan layanan reservasi festival yang unik di wilayah Sumatera Utara, Indonesia. Dengan fokus pada keindahan alam dan budaya yang khas di daerah ini, layanan ini memungkinkan pelanggan untuk merencanakan dan mereservasi partisipasi dalam berbagai festival yang menarik. Tim profesional SmutOur dengan cermat mengelola detail perjalanan, termasuk akomodasi dan akses ke acara festival, memberikan pelanggan pengalaman yang lancar dan memuaskan saat menikmati keunikan festival-festival yang diselenggarakan di Sumatera Utara. Dengan pendekatan ini, SmutOur tidak hanya menyediakan layanan reservasi, tetapi juga membuka pintu bagi pelanggan untuk mengeksplorasi dan menikmati momen-momen kultural yang tak terlupakan di tengah pesona Sumatera Utara.
                         </p>
                     </center>
-                    <!-- <a href="" class="btn">Explore Now &#8594;</a> -->
                 </div>
-                <!-- <div class="col-2">
-                    <img src="assets/images/image1.png">
-                </div> -->
             </div>
         </div>
     </div>
@@ -73,150 +66,36 @@
             </div>
         </form>
 
-        <div class="row">
-            <div class="col-4">
-                <a href="fest-view.html"><img src="assets/images/uploads/pamerantempo.jpg"></a>
-                <a href="fest-view.html"><h4>Festival 1</h4></a>
-                <a href="fest-view.html"><p>on <strong>Jadwal</strong></p></a>
-                <a href="fest-view.html"><p>Lokasi 1</p></a>
-                <center><a href="fest-booking.html" class="btn-booking" style="color: white;">Booking &#8594;</a></center>
-            </div>
-            <div class="col-4">
-                <a href="fest-view.html"><img src="assets/images/uploads/pamerantempo.jpg"></a>
-                <a href="fest-view.html"><h4>Festival 2</h4></a>
-                <a href="fest-view.html"><p>on <strong>Jadwal</strong></p></a>
-                <a href="fest-view.html"><p>Lokasi 2</p></a>
-                <center><a href="fest-booking.html" class="btn-booking" style="color: white;">Booking &#8594;</a></center>
-            </div>
-            <div class="col-4">
-                <a href="fest-view.html"><img src="assets/images/uploads/pamerantempo.jpg"></a>
-                <a href="fest-view.html"><h4>Festival 3</h4></a>
-                <a href="fest-view.html"><p>on <strong>Jadwal</strong></p></a>
-                <a href="fest-view.html"><p>Lokasi 3</p></a>
-                <center><a href="fest-booking.html" class="btn-booking" style="color: white;">Booking &#8594;</a></center>
-            </div>
-            <div class="col-4">
-                <a href="fest-view.html"><img src="assets/images/uploads/pamerantempo.jpg"></a>
-                <a href="fest-view.html"><h4>Festival 4</h4></a>
-                <a href="fest-view.html"><p>on <strong>Jadwal</strong></p></a>
-                <a href="fest-view.html"><p>Lokasi 4</p></a>
-                <center><a href="fest-booking.html" class="btn-booking" style="color: white;">Booking &#8594;</a></center>
-            </div>
-            <div class="col-4">
-                <a href="fest-view.html"><img src="assets/images/uploads/pamerantempo.jpg"></a>
-                <a href="fest-view.html"><h4>Festival 5</h4></a>
-                <a href="fest-view.html"><p>on <strong>Jadwal</strong></p></a>
-                <a href="fest-view.html"><p>Lokasi 5</p></a>
-                <center><a href="fest-booking.html" class="btn-booking" style="color: white;">Booking &#8594;</a></center>
-            </div>
+        <div class="row" id="festView">
+          <script>
+            // Select the HTML element where you want to display the data
+            const festContainer = document.getElementById("festView");
+            // Map the data from the response rows
+            fetch("http://localhost:8000/festival")
+              .then((response) => response.json())
+              .then((data) => {
+                // Map the data from the response rows
+                const festElement = data.rows.map((fest) => {
+                  return `
+                    <div class="col-4">
+                        <a href="fest-view.html?id=${fest.id}"><img src="assets/images/uploads/${fest.foto}"></a>
+                        <a href="fest-view.html?id=${fest.id}"><h4 class="sizetitle">${fest.nama}</h4></a>
+                        <a href="fest-view.html?id=${fest.id}"><p>on <strong>${fest.jadwal}</strong></p></a>
+                        <a href="fest-view.html?id=${fest.id}"><p><strong>${fest.lokasi}</strong></p></a>
+                        <center><a href="fest-booking.html?id=${fest.id}" class="btn-booking" style="color: white;">Booking &#8594;</a></center>
+                    </div>
+                  `;
+                });
+                festContainer.innerHTML = festElement.join("");
+              });
+          </script>
         </div>
     </div>
-
-
-    <!-- Offer -->
-    <!-- <div class="offer">
-        <div class="small-container">
-            <div class="row">
-                <div class="col-2">
-                    <img src="assets/images/exclusive.png" class="offer-img">
-                </div>
-                <div class="col-2">
-                    <p>Exclusively Available on RedStore</p>
-                    <h1>Smart Band 4</h1>
-                    <small>The Mi Smart Band 4 fearures a 39.9%larger (than Mi Band 3) AMOLED color full-touch display
-                        with adjustable brightness, so everything is clear as can be.<br></small>
-                    <a href="products.html" class="btn">Buy Now &#8594;</a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- Testimonial -->
-    <!-- <div class="testimonial">
-        <div class="small-container">
-            <div class="row">
-                <div class="col-3">
-                    <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        industry's standard dummy text.</p>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <img src="assets/images/user-1.png">
-                    <h3>Sean Parker</h3>
-                </div>
-                <div class="col-3">
-                    <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        industry's standard dummy text.</p>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <img src="assets/images/user-2.png">
-                    <h3>Mike Smith</h3>
-                </div>
-                <div class="col-3">
-                    <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        industry's standard dummy text.</p>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <img src="assets/images/user-3.png">
-                    <h3>Mabel Joe</h3>
-                </div>
-            </div>
-        </div>
-    </div>-->
-
-    <!-- Brands -->
-
-    <!-- <div class="brands">
-        <div class="small-container">
-            <div class="row">
-                <div class="col-5">
-                    <img src="assets/images/logo-godrej.png">
-                </div>
-                <div class="col-5">
-                    <img src="assets/images/logo-oppo.png">
-                </div>
-                <div class="col-5">
-                    <img src="assets/images/logo-coca-cola.png">
-                </div>
-                <div class="col-5">
-                    <img src="assets/images/logo-paypal.png">
-                </div>
-                <div class="col-5">
-                    <img src="assets/images/logo-philips.png">
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <!-- Footer -->
     <div class="footer">
         <div class="container">
             <div class="row">
-                <!-- <div class="footer-col-1">
-                    <h3>Download Our App</h3>
-                    <p>Download App for Android and ios mobile phone.</p>
-                    <div class="app-logo">
-                        <img src="assets/images/play-store.png">
-                        <img src="assets/images/app-store.png">
-                    </div>
-                </div> -->
                 <div class="footer-col-2">
                     <h1 style="font-size: 50px;">SmutOur.</h1>
                     <p>
@@ -228,15 +107,7 @@
                         dan budaya unik Sumatera Utara.
                     </p>
                 </div>
-                <!-- <div class="footer-col-3">
-                    <h3>Useful Links</h3>
-                    <ul>
-                        <li>Coupons</li>
-                        <li>Blog Post</li>
-                        <li>Return Policy</li>
-                        <li>Join Affiliate</li>
-                    </ul>
-                </div> -->
+                
                 <div class="footer-col-4" style="text-align: right;">
                     <h3>Follow Us</h3>
                     <ul>
