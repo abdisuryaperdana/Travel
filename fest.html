@@ -44,12 +44,13 @@
 
     <div class="small-container">
         <h2 class="title">Festival di Sumatera Utara</h2>
-        <form action="#" class="row g-12">
+        <div class="row g-12">
+        <!-- <form action="#" class="row g-12"> -->
             <div style="margin-left: 10px ;">
-                <input type="text" class="form-control" placeholder="Cari Festival"/>
+                <input type="text" class="form-control" id="cari-fest" placeholder="Cari Festival"/>
             </div>
             <div>
-            <button type="submit" id="submit" class="btn-search">
+            <button type="submit" id="submit" class="btn-search" onclick="search_fest()">
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="14"
@@ -64,7 +65,11 @@
                 </svg>
             </button>
             </div>
-        </form>
+        </div>
+        <!-- </form> -->
+
+        <div class="row search" id="festCari">
+        </div>
 
         <div class="row" id="festView">
           <script>

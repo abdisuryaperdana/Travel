@@ -12,6 +12,66 @@ jQuery(document).ready(function() {
     });
 });
 
+function search_fest(){
+  document.getElementById('festView').style.display = 'none';
+  var nama = document.getElementById('cari-fest').value;
+    if(nama==""){
+        nama="null";
+    }
+    console.log("nama:", nama);
+    // Select the HTML element where you want to display the data
+    const festCariContainer = document.getElementById("festCari");
+    // Map the data from the response rows
+    fetch(`http://localhost:8000/fest-nama/${nama}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Map the data from the response rows
+        const festElement = data.rows.map((fest_cari) => {
+          return `
+            <div class="col-4">
+                <a href="fest-view.html?id=${fest_cari.id}"><img src="assets/images/uploads/${fest_cari.foto}"></a>
+                <a href="fest-view.html?id=${fest_cari.id}"><h4 class="sizetitle">${fest_cari.nama}</h4></a>
+                <a href="fest-view.html?id=${fest_cari.id}"><p>on <strong>${fest_cari.jadwal}</strong></p></a>
+                <a href="fest-view.html?id=${fest_cari.id}"><p><strong>${fest_cari.lokasi}</strong></p></a>
+                <center><a href="fest-booking.html?id=${fest_cari.id}" class="btn-booking" style="color: white;">Booking &#8594;</a></center>
+            </div>
+          `;
+        });
+        festCariContainer.innerHTML = festElement.join("");
+      });
+  document.getElementById('festCari').style.display = 'flex';
+}
+
+function search_pameran(){
+  document.getElementById('pamView').style.display = 'none';
+  var nama = document.getElementById('cari-pameran').value;
+    if(nama==""){
+        nama="null";
+    }
+    console.log("nama:", nama);
+    // Select the HTML element where you want to display the data
+    const festCariContainer = document.getElementById("pamCari");
+    // Map the data from the response rows
+    fetch(`http://localhost:8000/pameran-nama/${nama}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Map the data from the response rows
+        const festElement = data.rows.map((pameran_cari) => {
+          return `
+            <div class="col-4">
+                <a href="fest-view.html?id=${pameran_cari.id}"><img src="assets/images/uploads/${pameran_cari.foto}"></a>
+                <a href="fest-view.html?id=${pameran_cari.id}"><h4 class="sizetitle">${pameran_cari.nama}</h4></a>
+                <a href="fest-view.html?id=${pameran_cari.id}"><p>on <strong>${pameran_cari.jadwal}</strong></p></a>
+                <a href="fest-view.html?id=${pameran_cari.id}"><p><strong>${pameran_cari.lokasi}</strong></p></a>
+                <center><a href="fest-booking.html?id=${pameran_cari.id}" class="btn-booking" style="color: white;">Booking &#8594;</a></center>
+            </div>
+          `;
+        });
+        festCariContainer.innerHTML = festElement.join("");
+      });
+  document.getElementById('pamCari').style.display = 'flex';
+}
+
 // form input booking
 function openPopupForm(i) {
     document.getElementById('popup-form-'+i).style.display = 'flex';
