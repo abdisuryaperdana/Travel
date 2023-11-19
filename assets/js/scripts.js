@@ -1,5 +1,6 @@
 jQuery(document).ready(function() {
     // Call the backstretch function on the specified div
+    // done
     $("#custom-background").backstretch([
         "assets/images/background/backgroundsumut1.png",
         "assets/images/background/backgroundsumut2.png",
