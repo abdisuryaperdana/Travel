@@ -3,78 +3,160 @@ function openPopupForm(i) {
     document.getElementById('popup-form-'+i).style.display = 'flex';
   }
   
-  function closePopupForm(i) {
-    document.getElementById('popup-form-'+i).style.display = 'none';
-  }
+function closePopupForm(i) {
+  document.getElementById('popup-form-'+i).style.display = 'none';
+}
   
-    function submitForm(action) {
-      if(action == 'booking'){
-        // Ambil nilai dari inputan
-        var nama = document.getElementById('nama').value;
-        var noHp = document.getElementById('no-hp').value;
-        var jumlahOrang = document.getElementById('jumlah-orang').value;
-        var hari = document.getElementById('hari-tgl').value;
-        var kegiatan = document.getElementById('kegiatan').value;
-        var jam = document.getElementById('jam').value;
-  
-      
-        // Lakukan sesuatu dengan nilai inputan, misalnya kirim ke server atau tampilkan di console
-        console.log('Nama:', nama);
-        console.log('No HP:', noHp);
-        console.log('Jumlah Orang:', jumlahOrang);
-        console.log('Hari:', hari);
-        console.log('Kegiatan:', kegiatan);
-        console.log('jam',jam);
-      
-        // Tutup pop-up form
-        closePopupForm();
-      }else if(action == 'festival'){
-        // Ambil nilai dari inputan
-        var nama_festival = document.getElementById('nama-kegiatan-festival').value;
-        var desk_festival = document.getElementById('deskripsi-festival').value;
-        var jdwl_festival = document.getElementById('jadwal-festival').value;
-        var lokasi_festival = document.getElementById('lokasi-festival').value;
-        var gmaps_festival = document.getElementById('gmaps-festival').value;
-        var foto_festival = document.getElementById('foto-festival').value;
-        var jenis = 'Festival';
-  
-      
-        // Lakukan sesuatu dengan nilai inputan, misalnya kirim ke server atau tampilkan di console
-        console.log('nama_festival:', nama_festival);
-        console.log('desk_festival:', desk_festival);
-        console.log('jdwl_festival:', jdwl_festival);
-        console.log('lokasi_festival:', lokasi_festival);
-        console.log('gmaps_festival:', gmaps_festival);
-        console.log('foto_festival:', foto_festival);
-        console.log('Festival', jenis);
-      
-        // Tutup pop-up form
-        closePopupForm();
-      }else if(action == 'pameran'){
-        // Ambil nilai dari inputan
-        var nama_pameran = document.getElementById('nama-kegiatan-pameran').value;
-        var desk_pameran = document.getElementById('deskripsi-pameran').value;
-        var jdwl_pameran = document.getElementById('jadwal-pameran').value;
-        var lokasi_pameran = document.getElementById('lokasi-pameran').value;
-        var gmaps_pameran = document.getElementById('gmaps-pameran').value;
-        var foto_pameran = document.getElementById('foto-pameran').value;
-        var jenis = 'Pameran';
-  
-      
-        // Lakukan sesuatu dengan nilai inputan, misalnya kirim ke server atau tampilkan di console
-        console.log('nama_pameran:', nama_pameran);
-        console.log('desk_pameran:', desk_pameran);
-        console.log('jdwl_pameran:', jdwl_pameran);
-        console.log('lokasi_pameran:', lokasi_pameran);
-        console.log('gmaps_pameran:', gmaps_pameran);
-        console.log('foto_pameran:', foto_pameran);
-        console.log('Pameran', jenis);
-      
-        // Tutup pop-up form
-        closePopupForm();
-      }
+function submitForm(action, id, pop_up) {
+  if(action == 'editbooked'){
+    const nama = document.getElementById('nama-'+id).value;
+    const nohp = document.getElementById('no-hp-'+id).value;
+    const jumlahorang = document.getElementById('jumlah-orang-'+id).value;
+    const jadwal = document.getElementById('hari-tgl-'+id).value;
+    const kegiatan = document.getElementById('kegiatan-'+id).value;
+    const jam = document.getElementById('jam-'+id).value;
+
+    const data_booking = {
+        nama,
+        nohp,
+        jumlahorang,
+        jadwal,
+        kegiatan,
+        jam,
+      };
+
+    try {
+      const response = fetch("http://localhost:8000/"+action+"/"+id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data_booking),
+      });
+      alert("Terima Kasih, Edit Data Booking berhasil!");
+      window.location.reload();
     }
+    catch(err) {
+      alert("Edit Data Booking gagal!");
+    }
+    closePopupForm(pop_up);
+  }else if(action == 'editfest'){
+    const name_foto = Math.random().toString(36).substr(2, 12)+".jpg";
     
-    // Tambahan: Menambahkan event listener ke tombol untuk membuka pop-up form
-    document.querySelector('.custom-btn').addEventListener('click', openPopupForm);
+    // Ambil nilai dari inputan
+    const nama = document.getElementById('nama-kegiatan-festival-'+id).value;
+    const deskripsi = document.getElementById('deskripsi-festival-'+id).value;
+    const jadwal = document.getElementById('jadwal-festival-'+id).value;
+    const lokasi = document.getElementById('lokasi-festival-'+id).value;
+    const gmaps = document.getElementById('gmaps-festival-'+id).value;
+    const foto = name_foto;
+    const jenis = 'Festival';
+
+    const data_festival = {
+        nama,
+        jadwal,
+        lokasi,
+        jenis,
+        gmaps,
+        deskripsi,
+        foto,
+      };
+
+  
+    try {
+      const response = fetch("http://localhost:8000/"+action+"/"+id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data_festival),
+      });
+      alert("Terima Kasih, Edit Data Festival berhasil!");
+      window.location.reload();
+    }
+    catch(err) {
+      alert("Edit Data Festival gagal!");
+    }
+
+    var fileInput = document.getElementById("foto-festival-"+id);
+                  
+    if (fileInput.files.length > 0) {
+        var file = fileInput.files[0];
+        var url = URL.createObjectURL(file);
+
+        var a = document.createElement('a');
+        a.href = url;
+
+        // Ganti 'new-filename.jpg' dengan nama file yang diinginkan
+        a.download = name_foto;
+
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    } else {
+        alert('Please select an image to save.');
+    }
+    closePopupForm(pop_up);
+  }else if(action == 'editpameran'){
+    const name_foto = Math.random().toString(36).substr(2, 12)+".jpg";
+
+    // Ambil nilai dari inputan
+    const nama = document.getElementById('nama-kegiatan-pameran-'+id).value;
+    const deskripsi = document.getElementById('deskripsi-pameran-'+id).value;
+    const jadwal = document.getElementById('jadwal-pameran-'+id).value;
+    const lokasi = document.getElementById('lokasi-pameran-'+id).value;
+    const gmaps = document.getElementById('gmaps-pameran-'+id).value;
+    const foto = name_foto;
+    const jenis = 'Pameran';
+
+    const data_pameran = {
+        nama,
+        jadwal,
+        lokasi,
+        jenis,
+        gmaps,
+        deskripsi,
+        foto,
+      };
+
+  
+    try {
+        const response = fetch("http://localhost:8000/"+action+"/"+id, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data_pameran),
+        });
+        alert("Terima Kasih, Edit Data Pameran berhasil!");
+        window.location.reload();
+      }
+      catch(err) {
+        alert("Edit Data Pameran gagal!");
+      }
+
+    var fileInput = document.getElementById("foto-pameran-"+id);
+                  
+    if (fileInput.files.length > 0) {
+        var file = fileInput.files[0];
+        var url = URL.createObjectURL(file);
+
+        var a = document.createElement('a');
+        a.href = url;
+
+        // Ganti 'new-filename.jpg' dengan nama file yang diinginkan
+        a.download = name_foto;
+
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    } else {
+        alert('Please select an image to save.');
+    }
+    closePopupForm(pop_up);
+  }
+}
+
+// Tambahan: Menambahkan event listener ke tombol untuk membuka pop-up form
+// document.querySelector('.custom-btn').addEventListener('click', openPopupForm);
     

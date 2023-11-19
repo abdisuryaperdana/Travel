@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Save Example</title>
+</head>
+<body>
+
+<h2>Image Save</h2>
+<form id="saveForm">
+    <input type="file" name="image" id="imageInput" accept="image/*">
+    <button type="button" onclick="saveImage()">Save Image</button>
+</form>
+
+<script>
+    function saveImage() {
+        var fileInput = document.getElementById('imageInput');
+
+        if (fileInput.files.length > 0) {
+            var file = fileInput.files[0];
+            var url = URL.createObjectURL(file);
+
+            var a = document.createElement('a');
+            a.href = url;
+
+            // Ganti 'new-filename.jpg' dengan nama file yang diinginkan
+            a.download = 'new-filename.jpg';
+
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        } else {
+            alert('Please select an image to save.');
+        }
+    }
+</script>
+
+</body>
+</html>

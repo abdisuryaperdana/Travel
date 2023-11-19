@@ -59,7 +59,7 @@
               .then((response) => response.json())
               .then((data) => {
                 // Map the data from the response rows
-                const festElement = data.rows.map((fest) => {
+                const festElement = data.rows.slice(0, 4).map((fest) => {
                   return `
                     <div class="col-4">
                         <a href="fest-view.html?id=${fest.id}"><img src="assets/images/uploads/${fest.foto}"></a>
@@ -90,7 +90,7 @@
               .then((response) => response.json())
               .then((data) => {
                 // Map the data from the response rows
-                const pamElement = data.data.map((pam) => {
+                const pamElement = data.data.slice(0, 4).map((pam) => {
                   return `
                     <div class="col-4">
                         <a href="pameran-view.html?id=${pam.id}"><img src="assets/images/uploads/${pam.foto}"></a>

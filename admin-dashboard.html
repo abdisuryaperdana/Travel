@@ -22,8 +22,6 @@
                         <li><a href="team.html">Our Team</a></li>
                     </ul>
                 </nav>
-                <!-- <a href="cart.html"><img src="assets/images/cart.png" width="30px" height="30px"></a>
-                <img src="assets/images/menu.png" class="menu-icon" onclick="menutoggle()"> -->
             </div>
         </nav>     
     </div>
@@ -132,7 +130,7 @@
                     </div>
                     <span class="close" onclick="closePopupForm('add-booking')">&times;</span>
                     <!-- Tabs Titles -->
-                    <h5>Tambah Data Booking</h5>
+                    <h5 class="fadeIn second">Tambah Data Booking</h5>
                     <!-- Login Form -->
                     <form>
                       <input
@@ -141,6 +139,7 @@
                         class="fadeIn second"
                         name="nama"
                         placeholder="Nama"
+                        required
                       />
                       <input
                         type="text"
@@ -148,6 +147,7 @@
                         class="fadeIn second"
                         name="no-hp"
                         placeholder="No Handphone"
+                        required
                       />
                       <input
                         type="text"
@@ -155,6 +155,7 @@
                         class="fadeIn second"
                         name="jmlorg"
                         placeholder="Jumlah Orang"
+                        required
                       />
                       <input
                         type="text"
@@ -162,6 +163,7 @@
                         class="fadeIn second"
                         name="hari-tgl"
                         placeholder="Hari/Tanggal"
+                        required
                       />
                       <input
                         type="text"
@@ -169,6 +171,7 @@
                         class="fadeIn second"
                         name="jam"
                         placeholder="Jam"
+                        required
                       />
                       <input
                         type="text"
@@ -176,6 +179,7 @@
                         class="fadeIn second"
                         name="kegiatan"
                         placeholder="Kegiatan"
+                        required
                       />
                       <input type="submit" class="fadeIn fourth" value="Submit" />
                     </form>
@@ -260,12 +264,43 @@
                     <td class="text-td">${booked.kegiatan}</td>
                     <td>
                       <div class="button-container">
-                        <button class="button-edit" onclick="openPopupForm('edit-booking')">Edit</button>
+                        <button class="button-edit" onclick="openPopupForm('edit-booking-${booked.id}')">Edit</button>
+                        <!-- start pop up edit booking -->
+                            <div id="popup-form-edit-booking-${booked.id}" class="popup-form">
+                              <div class="wrapper fadeInDown">
+                                
+                                <div id="formContent">
+                                  <!-- Icon -->
+                                  <div class="fadeIn first">
+                                    <img
+                                      src="./assets/images/logo/logowordmark.png"
+                                      id="icon"
+                                      alt="User Icon"
+                                      class="img-size"
+                                    />
+                                  </div>
+                                  <span class="close" onclick="closePopupForm('edit-booking-${booked.id}')">&times;</span>
+                                  <!-- Tabs Titles -->
+                                  <h5 class="fadeIn second">Edit Data Booking</h5>
+                                  <!-- Login Form -->
+                                    <input type="text" id="nama-${booked.id}" class="fadeIn second" name="nama-${booked.id}" placeholder="Nama" value="${booked.nama}">
+                                    <input type="text" id="no-hp-${booked.id}" class="fadeIn second" name="no-hp-${booked.id}" placeholder="No Handphone" value="${booked.nohp}">
+                                    <input type="text" id="jumlah-orang-${booked.id}" class="fadeIn second" name="jumlah-orang-${booked.id}" placeholder="Jumlah Orang" value="${booked.jumlahorang}">
+                                    <input type="text" id="jam-${booked.id}" class="fadeIn second" name="jam-${booked.id}" placeholder="Jam" value="${booked.jam}">
+                                    <input type="text" id="hari-tgl-${booked.id}" class="fadeIn second" name="hari-tgl-${booked.id}" placeholder="Hari/Tanggal" value="${booked.jadwal}">
+                                    <input type="text" id="kegiatan-${booked.id}" class="fadeIn second" name="kegiatan-${booked.id}" placeholder="Kegiatan" value="${booked.kegiatan}">
+                                    <input type="submit" class="fadeIn fourth" value="Submit" onclick="submitForm('editbooked', '${booked.id}', 'edit-booking-${booked.id}')">
+                                </div>
+                              </div>
+                            </div>
+                          <!-- end pop up edit booking -->
+
+
                         <button class="button-delete" onclick="openPopupForm('delete-booking')">Delete</button>
                       </div>
                     </td>
                     </tr>
-                    `
+                    `;
                   }
                 );
                 bookingContainer.innerHTML = bookedElements.join("");
@@ -304,6 +339,7 @@
                       class="fadeIn second"
                       name="nama-kegiatan-festival"
                       placeholder="Nama Kegiatan"
+                      required
                     />
                     <input
                       type="text"
@@ -311,6 +347,7 @@
                       class="fadeIn second"
                       name="deskripsi-festival"
                       placeholder="Deskripsi"
+                      required
                     />
                     <input
                       type="text"
@@ -318,6 +355,7 @@
                       class="fadeIn second"
                       name="jadwal-festival"
                       placeholder="Jadwal"
+                      required
                     />
                     <input
                       type="text"
@@ -325,6 +363,7 @@
                       class="fadeIn second"
                       name="lokasi-festival"
                       placeholder="Lokasi"
+                      required
                     />
                     <input
                       type="text"
@@ -332,25 +371,27 @@
                       class="fadeIn second"
                       name="gmaps-festival"
                       placeholder="Gmaps"
+                      required
                     />
-                    <!-- <label
+                    <label
                       class="fadeIn second sizelabelinput"
                       for="foto-festival"
                       >Unggah Foto Wisata</label
-                    > -->
-                    <!-- <input
+                    >
+                    <input
                       type="file"
                       id="foto-festival"
                       class="fadeIn second"
                       name="foto-festival"
-                    /> -->
-                    <input
+                      required
+                    />
+                    <!-- <input
                       type="text"
                       id="foto-festival"
                       class="fadeIn second"
                       name="foto"
                       placeholder="Foto"
-                    />
+                    /> -->
                     <input
                       type="submit"
                       class="fadeIn fourth"
@@ -362,16 +403,38 @@
   
                     formfest.addEventListener("submit", async (event) => {
                       event.preventDefault();
-  
+
+                      const name_foto = Math.random().toString(36).substr(2, 12)+".jpg";
+                      const id = Math.random().toString(36).substr(2, 9);
                       const nama = document.getElementById("nama-kegiatan-festival").value;
                       const deskripsi = document.getElementById("deskripsi-festival").value;
                       const jadwal = document.getElementById("jadwal-festival").value;
                       const lokasi = document.getElementById("lokasi-festival").value;
                       const gmaps = document.getElementById("gmaps-festival").value;
-                      const foto = document.getElementById("foto-festival").value;
+                      const foto = name_foto;
                       const jenis = 'Festival';
+
+                      var fileInput = document.getElementById("foto-festival");
+                  
+                      if (fileInput.files.length > 0) {
+                          var file = fileInput.files[0];
+                          var url = URL.createObjectURL(file);
+
+                          var a = document.createElement('a');
+                          a.href = url;
+
+                          // Ganti 'new-filename.jpg' dengan nama file yang diinginkan
+                          a.download = name_foto;
+
+                          document.body.appendChild(a);
+                          a.click();
+                          document.body.removeChild(a);
+                      } else {
+                          alert('Please select an image to save.');
+                      }
   
                       const data = {
+                        id,
                         nama,
                         deskripsi,
                         jadwal,
@@ -441,8 +504,39 @@
                         <td class="text-td">${festival.foto}</td>
                         <td>
                           <div class="button-container">
-                        <button class="button-edit" onclick="openPopupForm('add-booking')">Edit</button>
-                        <button class="button-delete" onclick="openPopupForm('add-booking')">Delete</button>
+                            <button class="button-edit" onclick="openPopupForm('edit-festival-${festival.id}')">Edit</button>
+                            <!-- start pop up edit festival -->
+                                <div id="popup-form-edit-festival-${festival.id}" class="popup-form">
+                                  <div class="wrapper fadeInDown">
+                                    
+                                    <div id="formContent">
+                                      <!-- Icon -->
+                                      <div class="fadeIn first">
+                                        <img
+                                          src="./assets/images/logo/logowordmark.png"
+                                          id="icon"
+                                          alt="User Icon"
+                                          class="img-size"
+                                        />
+                                      </div>
+                                      <span class="close" onclick="closePopupForm('edit-festival-${festival.id}')">&times;</span>
+                                      <!-- Tabs Titles -->
+                                      <h5 class="fadeIn second">Edit Data Festival</h5>
+                                      <!-- Login Form -->
+                                        <input type="text" id="nama-kegiatan-festival-${festival.id}" class="fadeIn second" name="nama-kegiatan-festival" placeholder="Nama Kegiatan" value="${festival.nama}">
+                                        <input type="text" id="deskripsi-festival-${festival.id}" class="fadeIn second" name="deskripsi-festival" placeholder="Deskripsi" value="${festival.deskripsi}">
+                                        <input type="text" id="jadwal-festival-${festival.id}" class="fadeIn second" name="jadwal-festival" placeholder="Jadwal" value="${festival.jadwal}">
+                                        <input type="text" id="lokasi-festival-${festival.id}" class="fadeIn second" name="lokasi-festival" placeholder="Lokasi" value="${festival.lokasi}">
+                                        <input type="text" id="gmaps-festival-${festival.id}" class="fadeIn second" name="gmaps-festival" placeholder="Gmaps" value="${festival.gmaps}">
+                                        <label class="fadeIn second sizelabelinput" for="foto-festival">Unggah Foto Wisata</label>
+                                        <input type="file" id="foto-festival-${festival.id}" class="fadeIn second" name="foto-festival" placeholder="Foto" value="${festival.foto}">
+                                        <input type="submit" class="fadeIn fourth" value="Submit" type="button" onclick="submitForm('editfest', '${festival.id}', 'edit-festival-${festival.id}')">
+                                    </div>
+                                  </div>
+                                </div>
+                              <!-- end pop up edit festival -->
+
+                            <button class="button-delete" onclick="openPopupForm('add-booking')">Delete</button>
                         </div>  
                         </td>
                       </tr>
@@ -486,6 +580,7 @@
                       class="fadeIn second"
                       name="nama-kegiatan-pameran"
                       placeholder="Nama Kegiatan"
+                      required
                     />
                     <input
                       type="text"
@@ -493,6 +588,7 @@
                       class="fadeIn second"
                       name="deskripsi-pameran"
                       placeholder="Deskripsi"
+                      required
                     />
                     <input
                       type="text"
@@ -500,6 +596,7 @@
                       class="fadeIn second"
                       name="jadwal-pameran"
                       placeholder="Jadwal"
+                      required
                     />
                     <input
                       type="text"
@@ -507,6 +604,7 @@
                       class="fadeIn second"
                       name="lokasi-pameran"
                       placeholder="Lokasi"
+                      required
                     />
                     <input
                       type="text"
@@ -514,25 +612,28 @@
                       class="fadeIn second"
                       name="gmaps-pameran"
                       placeholder="Gmaps"
+                      required
                     />
-                    <!-- <label
+                    <label
                       class="fadeIn second sizelabelinput"
-                      for="foto-festival"
+                      for="foto-pameran"
                       >Unggah Foto Wisata</label
-                    > -->
-                    <!-- <input
-                      type="file"
-                      id="foto-festival"
-                      class="fadeIn second"
-                      name="foto-festival"
-                    /> -->
+                    >
                     <input
+                      type="file"
+                      id="foto-pameran"
+                      class="fadeIn second"
+                      name="foto-pameran"
+                      required
+                    />
+                    <!-- <input
                       type="text"
                       id="foto-pameran"
                       class="fadeIn second"
                       name="foto"
                       placeholder="Foto"
-                    />
+                      required
+                    /> -->
                     <input
                       type="submit"
                       class="fadeIn fourth"
@@ -545,15 +646,38 @@
                     formpameran.addEventListener("submit", async (event) => {
                       event.preventDefault();
   
+                      const name_foto = Math.random().toString(36).substr(2, 12)+".jpg";
+                      const id = Math.random().toString(36).substr(2, 9);
                       const nama = document.getElementById("nama-kegiatan-pameran").value;
                       const deskripsi = document.getElementById("deskripsi-pameran").value;
                       const jadwal = document.getElementById("jadwal-pameran").value;
                       const lokasi = document.getElementById("lokasi-pameran").value;
                       const gmaps = document.getElementById("gmaps-pameran").value;
-                      const foto = document.getElementById("foto-pameran").value;
+                      const foto = name_foto;
+
                       const jenis = 'Pameran';
+
+                      var fileInput = document.getElementById("foto-pameran");
+                  
+                      if (fileInput.files.length > 0) {
+                          var file = fileInput.files[0];
+                          var url = URL.createObjectURL(file);
+
+                          var a = document.createElement('a');
+                          a.href = url;
+
+                          // Ganti 'new-filename.jpg' dengan nama file yang diinginkan
+                          a.download = name_foto;
+
+                          document.body.appendChild(a);
+                          a.click();
+                          document.body.removeChild(a);
+                      } else {
+                          alert('Please select an image to save.');
+                      }
   
                       const data = {
+                        id,
                         nama,
                         deskripsi,
                         jadwal,
@@ -623,7 +747,38 @@
               <td class="text-td">${pameran.foto}</td>
               <td>
                 <div class="button-container">
-                        <button class="button-edit" onclick="openPopupForm('add-booking')">Edit</button>
+                        <button class="button-edit" onclick="openPopupForm('edit-pameran-${pameran.id}')">Edit</button>
+                        <!-- start pop up edit pameran -->
+                            <div id="popup-form-edit-pameran-${pameran.id}" class="popup-form">
+                              <div class="wrapper fadeInDown">
+                                
+                                <div id="formContent">
+                                  <!-- Icon -->
+                                  <div class="fadeIn first">
+                                    <img
+                                      src="./assets/images/logo/logowordmark.png"
+                                      id="icon"
+                                      alt="User Icon"
+                                      class="img-size"
+                                    />
+                                  </div>
+                                  <span class="close" onclick="closePopupForm('edit-pameran-${pameran.id}')">&times;</span>
+                                  <!-- Tabs Titles -->
+                                  <h5 class="fadeIn second">Edit Data Pameran</h5>
+                                  <!-- Login Form -->
+                                    <input type="text" id="nama-kegiatan-pameran-${pameran.id}" class="fadeIn second" name="nama-kegiatan-pameran" placeholder="Nama Kegiatan" value="${pameran.nama}">
+                                    <input type="text" id="deskripsi-pameran-${pameran.id}" class="fadeIn second" name="deskripsi-pameran" placeholder="Deskripsi" value="${pameran.deskripsi}">
+                                    <input type="text" id="jadwal-pameran-${pameran.id}" class="fadeIn second" name="jadwal-pameran" placeholder="Jadwal" value="${pameran.jadwal}">
+                                    <input type="text" id="lokasi-pameran-${pameran.id}" class="fadeIn second" name="lokasi-pameran" placeholder="Lokasi" value="${pameran.lokasi}">
+                                    <input type="text" id="gmaps-pameran-${pameran.id}" class="fadeIn second" name="gmaps-pameran" placeholder="Gmaps" value="${pameran.gmaps}">
+                                    <label class="fadeIn second sizelabelinput" for="foto-pameran">Unggah Foto Wisata</label>
+                                    <input type="file" id="foto-pameran-${pameran.id}" class="fadeIn second" name="foto-pameran" placeholder="Foto" value="${pameran.foto}">
+                                    <input type="submit" class="fadeIn fourth" value="Submit" type="button" onclick="submitForm('editpameran', '${pameran.id}', 'edit-pameran-${pameran.id}')">
+                                </div>
+                              </div>
+                            </div>
+                          <!-- end pop up edit pameran -->
+
                         <button class="button-delete" onclick="openPopupForm('add-booking')">Delete</button>
                 </div> 
               </td>
