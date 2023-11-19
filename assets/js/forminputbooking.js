@@ -156,7 +156,19 @@ function submitForm(action, id, pop_up) {
     closePopupForm(pop_up);
   }
 }
-
-// Tambahan: Menambahkan event listener ke tombol untuk membuka pop-up form
-// document.querySelector('.custom-btn').addEventListener('click', openPopupForm);
-    
+function Delete(action, id){
+  try {
+    const response = fetch("http://localhost:8000/"+action+"/"+id, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(data_pameran),
+    });
+    alert("Terima Kasih, Delete Data berhasil!");
+    window.location.reload();
+  }
+  catch(err) {
+    alert("Delete Data Gagal!");
+  }
+}

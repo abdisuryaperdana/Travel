@@ -297,7 +297,7 @@
                           <!-- end pop up edit booking -->
 
 
-                        <button class="button-delete" onclick="openPopupForm('delete-booking')">Delete</button>
+                        <button class="button-delete" onclick="Delete('deletebooked','${booked.id}')">Delete</button>
                       </div>
                     </td>
                     </tr>
@@ -537,7 +537,8 @@
                                 </div>
                               <!-- end pop up edit festival -->
 
-                            <button class="button-delete" onclick="openPopupForm('add-booking')">Delete</button>
+                            <button class="button-delete" onclick="Delete('deletefest','${festival.id}')">Delete</button>
+                            
                         </div>  
                         </td>
                       </tr>
@@ -780,7 +781,7 @@
                             </div>
                           <!-- end pop up edit pameran -->
 
-                        <button class="button-delete" onclick="openPopupForm('add-booking')">Delete</button>
+                        <button class="button-delete" onclick="Delete('deletepameran','${pameran.id}')">Delete</button>
                 </div> 
               </td>
             </tr>
